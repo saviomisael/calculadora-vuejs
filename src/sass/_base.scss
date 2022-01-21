@@ -1,0 +1,23 @@
+@use 'variables';
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: variables.$roboto;
+  background-image: linear-gradient(90deg, variables.$purple, variables.$gray);
+  max-width: 100vw;
+  min-height: 100vh;
+  color: variables.$white;
+}
