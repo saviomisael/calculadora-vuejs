@@ -21,3 +21,8 @@ body {
   min-height: 100vh;
   color: variables.$white;
 }
+
+button {
+  border: none;
+  cursor: pointer;
+}
