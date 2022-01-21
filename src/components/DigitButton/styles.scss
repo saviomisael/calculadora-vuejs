@@ -1,0 +1,6 @@
+@use '../../sass/_variables.scss';
+@use '../../sass/mixins';
+
+.digit-button {
+  @include mixins.keyCalculator(variables.$blackLight);
+}
