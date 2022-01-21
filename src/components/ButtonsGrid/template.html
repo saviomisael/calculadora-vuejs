@@ -1,7 +1,9 @@
 <section class="buttons-grid">
   <button class="buttons-grid__button--dark">C</button>
 
-  <button class="buttons-grid__button--dark">backspace</button>
+  <button class="buttons-grid__button--dark">
+    <img :src="backspaceIcon" alt="backspace icon" />
+  </button>
 
   <operator-button operatorSymbol="√" operation="square" />
   <operator-button operatorSymbol="÷" operation="div" />
