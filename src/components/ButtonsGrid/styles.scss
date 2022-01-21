@@ -1,0 +1,24 @@
+@use '../../sass/_variables.scss';
+@use '../../sass/mixins';
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 90rem;
+  margin: auto;
+  gap: 1rem;
+
+  &__button {
+    &--dark {
+      @include mixins.keyCalculator(variables.$black);
+    }
+
+    &--light {
+      @include mixins.keyCalculator(variables.$blackLight);
+    }
+
+    &--salmon {
+      @include mixins.keyCalculator(variables.$salmon);
+    }
+  }
+}
