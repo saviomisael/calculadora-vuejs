@@ -4,7 +4,7 @@ import ButtonsGrid from '../ButtonsGrid'
 import ModalError from '../ModalError'
 
 export default {
-  name: 'Calculator',
+  name: 'CalculatorBox',
   setup() {
     const formula = inject('formula')
     const result = inject('result')
