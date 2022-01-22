@@ -12,7 +12,7 @@ export const formatFormulaNumbers = (formula) => {
   formula = formula
     .split(' ')
     .map((x) => {
-      if (/\.0?$/.test(x)) {
+      if (/\.$/.test(x) || /0$/.test(x)) {
         return x.replace('.', ',')
       }
 
