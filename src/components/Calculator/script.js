@@ -6,4 +6,5 @@ export default {
     PanelResult,
     ButtonsGrid,
   },
+  inject: ['formula', 'result'],
 }
