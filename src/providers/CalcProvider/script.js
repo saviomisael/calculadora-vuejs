@@ -62,9 +62,7 @@ export default {
     provide('resolveFormula', () => {
       occurDivisionPerZero.value = false
 
-      if (!formula.value) return
-
-      if (isFinalCharacterOperator(formula.value)) return
+      if (!formula.value || isFinalCharacterOperator(formula.value)) return
 
       if (formulaContainsDivPerZero(formula.value)) {
         occurDivisionPerZero.value = true
