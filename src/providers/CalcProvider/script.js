@@ -1,16 +1,23 @@
 import { provide, ref, readonly } from 'vue'
+import { evaluate } from 'mathjs'
+
 import { getFinalCharacter } from '../../utils/getFinalCharacter'
 import { getLastNumber } from '../../utils/getLastNumber'
+import { isFinalCharacterOperator } from '../../utils/isFinalCharacterOperator'
 import { replaceFinalCharacter } from '../../utils/replaceFinalCharacter'
+import { formulaContainsDivPerZero } from '../../utils/formulaContainsDivPerZero'
+import { toMathFormulaFormat } from '../../utils/toMathFormulaFormat'
 
 export default {
   name: 'CalcProvider',
   setup() {
     const formula = ref('')
     const result = ref('')
+    const occurDivisionPerZero = ref(false)
 
     provide('formula', readonly(formula))
     provide('result', readonly(result))
+    provide('occurDivisionPerZero', readonly(occurDivisionPerZero))
 
     provide('appendFormula', (value) => {
       formula.value = `${formula.value}${value}`
@@ -50,6 +57,24 @@ export default {
         0,
         indexOfLastNumber,
       )} ${lastNumber}`
+    })
+
+    provide('resolveFormula', () => {
+      occurDivisionPerZero.value = false
+
+      if (!formula.value) return
+
+      if (isFinalCharacterOperator(formula.value)) return
+
+      if (formulaContainsDivPerZero(formula.value)) {
+        occurDivisionPerZero.value = true
+
+        return
+      }
+
+      result.value = String(evaluate(toMathFormulaFormat(formula.value)))
+
+      formula.value = `${formula.value}=`
     })
   },
 }
