@@ -1,5 +1,6 @@
 import { provide, ref, readonly } from 'vue'
 import { getFinalCharacter } from '../../utils/getFinalCharacter'
+import { getLastNumber } from '../../utils/getLastNumber'
 import { replaceFinalCharacter } from '../../utils/replaceFinalCharacter'
 
 export default {
@@ -34,6 +35,21 @@ export default {
       }
 
       formula.value = `${formula.value} ${operator} `
+    })
+
+    provide('invertSignal', () => {
+      if (!formula.value) return
+
+      let lastNumber = getLastNumber(formula.value)
+
+      const indexOfLastNumber = formula.value.lastIndexOf(lastNumber)
+
+      lastNumber = Number(lastNumber) * -1
+
+      formula.value = `${formula.value.slice(
+        0,
+        indexOfLastNumber,
+      )} ${lastNumber}`
     })
   },
 }

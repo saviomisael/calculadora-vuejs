@@ -41,7 +41,9 @@
     operatorSymbol="+"
   />
 
-  <button class="buttons-grid__button--light">+/-</button>
+  <button class="buttons-grid__button--light" @click="handleInvertSignalClick">
+    +/-
+  </button>
 
   <digit-button @on-digit-click="handleDigitClick" digit="0" />
   <digit-button @on-digit-click="handleDigitClick" digit="." />

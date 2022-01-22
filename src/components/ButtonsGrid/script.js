@@ -8,10 +8,12 @@ export default {
   setup() {
     const appendFormula = inject('appendFormula')
     const addOperator = inject('addOperator')
+    const invertSignal = inject('invertSignal')
 
     return {
       appendFormula,
       addOperator,
+      invertSignal,
     }
   },
   data() {
@@ -29,6 +31,9 @@ export default {
     },
     handleOperatorClick(operator) {
       this.addOperator(operator)
+    },
+    handleInvertSignalClick() {
+      this.invertSignal()
     },
   },
 }
