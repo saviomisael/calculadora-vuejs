@@ -82,5 +82,9 @@ export default {
       result.value = ''
       occurDivisionPerZero.value = false
     })
+
+    provide('clearDivPerZero', () => {
+      occurDivisionPerZero.value = false
+    })
   },
 }
