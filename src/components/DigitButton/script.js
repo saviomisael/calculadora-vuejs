@@ -1,10 +1,10 @@
 export default {
   props: {
     digit: {
-      type: Number,
+      type: String,
       required: true,
       validator(value) {
-        return /^[0-9]$/.test(value)
+        return /^[0-9]$/.test(value) || value === '.'
       },
     },
   },
