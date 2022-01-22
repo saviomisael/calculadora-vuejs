@@ -18,7 +18,8 @@
     background-color: rgba(variables.$white, 0.25);
     border-radius: 0.6rem;
     padding: 4rem;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
+    animation: scale-modal 0.3s ease-in;
   }
 
   &__close-button {
@@ -35,5 +36,14 @@
     width: 3rem;
     height: 3rem;
     font-weight: 900;
+  }
+}
+
+@keyframes scale-modal {
+  from {
+    transform: translate(-50%, -50%) scaleX(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scaleX(1);
   }
 }
