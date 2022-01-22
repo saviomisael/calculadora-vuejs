@@ -1,4 +1,9 @@
-<main class="calculator">
+<main class="calculator" v-if="!occurDivisionPerZero">
   <panel-result :formula="formula" :result="result"></panel-result>
   <buttons-grid></buttons-grid>
 </main>
+
+<modal-error
+  v-if="occurDivisionPerZero"
+  @on-close-modal="handleCloseModalClick"
+></modal-error>

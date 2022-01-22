@@ -10,4 +10,14 @@
   padding: 1rem;
   background-color: rgba(variables.$white, 0.2);
   border-radius: 0.4rem;
+  animation: fade-in 0.4s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
