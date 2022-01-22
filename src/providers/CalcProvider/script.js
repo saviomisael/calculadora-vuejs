@@ -45,7 +45,7 @@ export default {
     })
 
     provide('invertSignal', () => {
-      if (!formula.value) return
+      if (!formula.value || isFinalCharacterOperator(formula.value)) return
 
       let lastNumber = getLastNumber(formula.value)
 
@@ -56,7 +56,7 @@ export default {
       formula.value = `${formula.value.slice(
         0,
         indexOfLastNumber,
-      )} ${lastNumber}`
+      )}${lastNumber}`
     })
 
     provide('resolveFormula', () => {
