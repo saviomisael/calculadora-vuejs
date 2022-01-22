@@ -1,0 +1,12 @@
+@use '../../sass/variables';
+
+.calculator {
+  max-width: 42rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(variables.$white, 0.2);
+  border-radius: 0.4rem;
+}
