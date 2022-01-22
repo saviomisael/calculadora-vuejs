@@ -4,5 +4,5 @@
 <script src="./script.js">
 </script>
 
-<style lang="sass" scoped src="./styles.scss">
+<style lang="scss" scoped src="./styles.scss">
 </style>
