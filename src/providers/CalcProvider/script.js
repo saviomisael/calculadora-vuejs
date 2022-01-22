@@ -76,5 +76,11 @@ export default {
 
       formula.value = `${formula.value}=`
     })
+
+    provide('clear', () => {
+      formula.value = ''
+      result.value = ''
+      occurDivisionPerZero.value = false
+    })
   },
 }

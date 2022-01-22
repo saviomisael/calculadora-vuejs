@@ -10,12 +10,14 @@ export default {
     const addOperator = inject('addOperator')
     const invertSignal = inject('invertSignal')
     const resolveFormula = inject('resolveFormula')
+    const clear = inject('clear')
 
     return {
       appendFormula,
       addOperator,
       invertSignal,
       resolveFormula,
+      clear,
     }
   },
   data() {
@@ -39,6 +41,9 @@ export default {
     },
     handleEqualOperatorClick() {
       this.resolveFormula()
+    },
+    handleClearClick() {
+      this.clear()
     },
   },
 }
