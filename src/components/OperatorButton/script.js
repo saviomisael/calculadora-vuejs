@@ -1,4 +1,5 @@
 export default {
+  name: 'OperatorButton',
   props: {
     operatorSymbol: {
       type: String,
