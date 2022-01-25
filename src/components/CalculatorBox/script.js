@@ -13,6 +13,7 @@ export default {
 
     const appendFormula = inject('appendFormula')
     const addOperator = inject('addOperator')
+    const resolveFormula = inject('resolveFormula')
 
     return {
       formula,
@@ -21,6 +22,7 @@ export default {
       clearDivPerZero,
       appendFormula,
       addOperator,
+      resolveFormula,
     }
   },
   components: {
@@ -48,12 +50,16 @@ export default {
         const operator = operatorsBindings[key]
         this.addOperator(operator)
       }
+
+      if (key === '=') {
+        this.resolveFormula()
+      }
     },
   },
   mounted() {
     document.addEventListener('keydown', this.handleKeyDown)
   },
-  unmounted() {
+  beforeUnmount() {
     document.addEventListener('keydown', this.handleKeyDown)
   },
 }
