@@ -18,4 +18,10 @@ describe('formatNumber', () => {
 
     expect(result).toBe('-10,02')
   })
+
+  it('should return the same parameter when pass a complex number', () => {
+    const result = formatNumber('3i')
+
+    expect(result).toBe('3i')
+  })
 })
