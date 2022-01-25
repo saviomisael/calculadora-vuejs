@@ -12,6 +12,7 @@ export default {
     const clearDivPerZero = inject('clearDivPerZero')
 
     const appendFormula = inject('appendFormula')
+    const addOperator = inject('addOperator')
 
     return {
       formula,
@@ -19,6 +20,7 @@ export default {
       occurDivisionPerZero,
       clearDivPerZero,
       appendFormula,
+      addOperator,
     }
   },
   components: {
@@ -31,8 +33,20 @@ export default {
       this.clearDivPerZero()
     },
     handleKeyDown({ key }) {
+      const operatorsBindings = {
+        '*': '×',
+        '-': '-',
+        '+': '+',
+        '/': '÷',
+      }
+
       if (/[0-9.]/.test(key)) {
         this.appendFormula(key)
+      }
+
+      if (['*', '-', '+', '/'].includes(key)) {
+        const operator = operatorsBindings[key]
+        this.addOperator(operator)
       }
     },
   },
