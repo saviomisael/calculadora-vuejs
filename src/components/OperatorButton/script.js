@@ -4,6 +4,9 @@ export default {
     operatorSymbol: {
       type: String,
       required: true,
+      validator(value) {
+        return ['÷', '×', '-', '+', '√'].includes(value)
+      },
     },
   },
   methods: {
