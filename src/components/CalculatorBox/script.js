@@ -14,6 +14,7 @@ export default {
     const appendFormula = inject('appendFormula')
     const addOperator = inject('addOperator')
     const resolveFormula = inject('resolveFormula')
+    const backspace = inject('backspace')
 
     return {
       formula,
@@ -23,6 +24,7 @@ export default {
       appendFormula,
       addOperator,
       resolveFormula,
+      backspace,
     }
   },
   components: {
@@ -53,6 +55,10 @@ export default {
 
       if (key === '=') {
         this.resolveFormula()
+      }
+
+      if (key === 'Backspace') {
+        this.backspace()
       }
     },
   },
