@@ -84,5 +84,24 @@ export default {
     provide('clearDivPerZero', () => {
       occurDivisionPerZero.value = false
     })
+
+    provide('backspace', () => {
+      if (!formula.value) return
+
+      if (/[0-9]$/.test(formula.value) || /-$/.test(formula.value)) {
+        formula.value = formula.value.slice(0, formula.value.length - 1)
+        return
+      }
+
+      if (formula.value.endsWith('=')) {
+        result.value = ''
+      }
+
+      let newFormula = formula.value.trim()
+      newFormula = newFormula.slice(0, newFormula.length - 1)
+      newFormula = newFormula.trim()
+
+      formula.value = newFormula
+    })
   },
 }

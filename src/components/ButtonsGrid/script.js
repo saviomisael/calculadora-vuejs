@@ -11,6 +11,7 @@ export default {
     const invertSignal = inject('invertSignal')
     const resolveFormula = inject('resolveFormula')
     const clear = inject('clear')
+    const backspace = inject('backspace')
 
     return {
       appendFormula,
@@ -18,6 +19,7 @@ export default {
       invertSignal,
       resolveFormula,
       clear,
+      backspace,
     }
   },
   data() {
@@ -45,5 +47,8 @@ export default {
     handleClearClick() {
       this.clear()
     },
+    handleBackspaceClick() {
+      this.backspace()
+    }
   },
 }
