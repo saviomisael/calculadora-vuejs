@@ -44,7 +44,7 @@ export default {
         '/': '÷',
       }
 
-      if (/[0-9.]/.test(key)) {
+      if (/^[0-9.]$/.test(key)) {
         this.appendFormula(key)
       }
 
