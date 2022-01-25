@@ -1,4 +1,7 @@
-import { formatNumber } from '../../../src/utils/formatNumber'
+import {
+  formatFormulaNumbers,
+  formatNumber,
+} from '../../../src/utils/formatNumber'
 
 describe('formatNumber', () => {
   it('should return a number formatted to pt-br format', () => {
@@ -23,5 +26,21 @@ describe('formatNumber', () => {
     const result = formatNumber('3i')
 
     expect(result).toBe('3i')
+  })
+})
+
+describe('formatFormulaNumbers', () => {
+  it('should replace dot per comma when formula numbers are decimals', () => {
+    let result = formatFormulaNumbers('1.2 + 2')
+
+    expect(result).toBe('1,2 + 2')
+
+    result = formatFormulaNumbers('1. + 2')
+
+    expect(result).toBe('1, + 2')
+
+    result = formatFormulaNumbers('1.0 + 2')
+
+    expect(result).toBe('1,0 + 2')
   })
 })
