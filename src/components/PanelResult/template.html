@@ -1,5 +1,9 @@
 <section class="panel-result">
-  <p class="panel-result__formula" :class="formulaVariants">
+  <p
+    class="panel-result__formula"
+    data-testid="formula"
+    :class="formulaVariants"
+  >
     {{ formulaFormatted }}
   </p>
   <p class="panel-result__result">{{ resultFormatted }}</p>
