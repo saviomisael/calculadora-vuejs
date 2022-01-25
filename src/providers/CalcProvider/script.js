@@ -20,6 +20,8 @@ export default {
     provide('occurDivisionPerZero', readonly(occurDivisionPerZero))
 
     provide('appendFormula', (value) => {
+      if (!formula.value && value === '.') return
+
       formula.value = `${formula.value}${value}`
     })
 

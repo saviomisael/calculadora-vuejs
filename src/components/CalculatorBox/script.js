@@ -11,11 +11,14 @@ export default {
     const occurDivisionPerZero = inject('occurDivisionPerZero')
     const clearDivPerZero = inject('clearDivPerZero')
 
+    const appendFormula = inject('appendFormula')
+
     return {
       formula,
       result,
       occurDivisionPerZero,
       clearDivPerZero,
+      appendFormula,
     }
   },
   components: {
@@ -27,5 +30,16 @@ export default {
     handleCloseModalClick() {
       this.clearDivPerZero()
     },
+    handleKeyDown({ key }) {
+      if (/[0-9.]/.test(key)) {
+        this.appendFormula(key)
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener('keydown', this.handleKeyDown)
+  },
+  unmounted() {
+    document.addEventListener('keydown', this.handleKeyDown)
   },
 }
