@@ -49,6 +49,6 @@ export default {
     },
     handleBackspaceClick() {
       this.backspace()
-    }
+    },
   },
 }
