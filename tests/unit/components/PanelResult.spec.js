@@ -11,4 +11,15 @@ describe('PanelResult component', () => {
 
     expect(getByTestId('formula').textContent).toBe('')
   })
+
+  it('should render formula with a smaller font size when result is truthy', () => {
+    const { getByTestId } = render(PanelResult, {
+      props: {
+        formula: '1 + 2=',
+        result: '3',
+      },
+    })
+
+    expect(getByTestId('formula')).toHaveClass('panel-result__formula--small')
+  })
 })
