@@ -33,4 +33,15 @@ describe('PanelResult component', () => {
 
     expect(getByTestId('result').textContent).toBe('11')
   })
+
+  it('should trunc result when result ends with comma and zeros', () => {
+    const { getByTestId } = render(PanelResult, {
+      props: {
+        formula: '',
+        result: '11.0000',
+      },
+    })
+
+    expect(getByTestId('result').textContent).toBe('11')
+  })
 })
