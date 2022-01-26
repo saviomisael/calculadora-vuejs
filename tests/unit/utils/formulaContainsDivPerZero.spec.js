@@ -6,4 +6,10 @@ describe('formulaContainsDivPerZero', () => {
 
     expect(result).toBeTruthy()
   })
+
+  it('should return false when formula does not contain division by zero', () => {
+    const result = formulaContainsDivPerZero('1 ÷ 1')
+
+    expect(result).toBeFalsy()
+  })
 })
