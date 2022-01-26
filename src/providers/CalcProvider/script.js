@@ -33,11 +33,21 @@ export default {
         return
       }
 
-      if (formula.value && getFinalCharacter(formula.value) === '√') return
+      if (
+        formula.value.trim().length === 1 &&
+        getFinalCharacter(formula.value) === '√'
+      )
+        return
 
       if (
-        formula.value &&
-        ['÷', '×', '-', '+'].includes(getFinalCharacter(formula.value))
+        ['÷', '×', '-', '+', '√'].includes(getFinalCharacter(formula.value)) &&
+        getFinalCharacter(formula.value) === operator
+      ) {
+        return
+      }
+
+      if (
+        ['÷', '×', '-', '+', '√'].includes(getFinalCharacter(formula.value))
       ) {
         formula.value = replaceFinalCharacter(formula.value, operator)
         return
