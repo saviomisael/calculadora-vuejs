@@ -1,30 +1,11 @@
 export const formatNumber = (num) => {
   if (isNaN(Number(num))) return num
 
-  const isNegativeNumber = num.startsWith('-')
+  const isDecimalNumber = num.includes('.')
 
-  if (isNegativeNumber) num = num.slice(1)
+  const [wholeNumber, fractionalNumber] = num.split('.')
 
-  num = num.replace('.', ',')
-
-  const isDecimalNumber = num.includes(',')
-
-  const [wholeNumber, fractionalNumber] = num.split(',')
-
-  num = wholeNumber
-    .split('')
-    .map((x, index, array) => {
-      if (array.length >= 3) {
-        if (index % 3 === 0) {
-          return `${x}.`
-        }
-      }
-
-      return x
-    })
-    .join('')
-
-  if (isNegativeNumber) num = `-${num}`
+  num = Number(wholeNumber).toLocaleString('pt-BR')
 
   if (num.endsWith('.')) num = num.slice(0, num.length - 1)
 
@@ -32,9 +13,7 @@ export const formatNumber = (num) => {
 
   if (!fractionalNumber) return num
 
-  num = `${num},${fractionalNumber}`
-
-  return num
+  return `${num},${fractionalNumber}`
 }
 
 export const formatFormulaNumbers = (formula) => {

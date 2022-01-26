@@ -13,6 +13,10 @@ describe('formatNumber', () => {
 
     expect(result).toBe('1.000.000')
 
+    result = formatNumber('100000')
+
+    expect(result).toBe('100.000')
+
     result = formatNumber('10.0')
 
     expect(result).toBe('10,0')
@@ -32,6 +36,14 @@ describe('formatNumber', () => {
     result = formatNumber('-10.02')
 
     expect(result).toBe('-10,02')
+
+    result = formatNumber('-10.')
+
+    expect(result).toBe('-10,')
+
+    result = formatNumber('-10.0')
+
+    expect(result).toBe('-10,0')
 
     result = formatNumber('25.455844122715714')
 
