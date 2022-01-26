@@ -33,6 +33,8 @@ export default {
         return
       }
 
+      // TODO - validate square operations
+
       if (
         formula.value.trim().length === 1 &&
         getFinalCharacter(formula.value) === '√'
