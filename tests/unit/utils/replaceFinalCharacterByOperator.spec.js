@@ -17,6 +17,14 @@ describe('replaceFinalCharacterByOperator', () => {
     result = replaceFinalCharacterByOperator('1 ÷ ', '×')
 
     expect(result).toBe('1 × ')
+
+    result = replaceFinalCharacterByOperator('1 ÷ ', '×')
+
+    expect(result).toBe('1 × ')
+
+    result = replaceFinalCharacterByOperator('1 ÷ ', '√')
+
+    expect(result).toBe('1 √ ')
   })
 
   it('should replace final character when formula ends with minus operator', () => {
@@ -35,6 +43,10 @@ describe('replaceFinalCharacterByOperator', () => {
     result = replaceFinalCharacterByOperator('1 - ', '×')
 
     expect(result).toBe('1 × ')
+
+    result = replaceFinalCharacterByOperator('1 - ', '√')
+
+    expect(result).toBe('1 √ ')
   })
 
   it('should replace final character when formula ends with plus operator', () => {
@@ -50,9 +62,9 @@ describe('replaceFinalCharacterByOperator', () => {
 
     expect(result).toBe('1 + ')
 
-    result = replaceFinalCharacterByOperator('1 + ', '×')
+    result = replaceFinalCharacterByOperator('1 + ', '√')
 
-    expect(result).toBe('1 × ')
+    expect(result).toBe('1 √ ')
   })
 
   it('should replace final character when formula ends with multiplication operator', () => {
@@ -71,6 +83,10 @@ describe('replaceFinalCharacterByOperator', () => {
     result = replaceFinalCharacterByOperator('1 × ', '×')
 
     expect(result).toBe('1 × ')
+
+    result = replaceFinalCharacterByOperator('1 × ', '√')
+
+    expect(result).toBe('1 √ ')
   })
 
   it('should replace final character when formula ends with square root operator', () => {
