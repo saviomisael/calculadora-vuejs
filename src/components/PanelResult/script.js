@@ -20,10 +20,23 @@ export default {
       return { 'panel-result__formula--small': Boolean(this.result) }
     },
     resultFormatted() {
-      return this.result && formatNumber(this.result)
+      return this.result && this.truncResult(this.result)
     },
     formulaFormatted() {
       return this.formula && formatFormulaNumbers(this.formula)
+    },
+  },
+  methods: {
+    truncResult(result) {
+      result = formatNumber(result)
+
+      if (/,0*/.test(result)) {
+        const commaIndex = result.lastIndexOf(',')
+
+        return result.slice(0, commaIndex)
+      }
+
+      return result
     },
   },
 }

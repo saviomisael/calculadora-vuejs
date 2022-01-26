@@ -22,4 +22,15 @@ describe('PanelResult component', () => {
 
     expect(getByTestId('formula')).toHaveClass('panel-result__formula--small')
   })
+
+  it('should trunc result when result ends with comma', () => {
+    const { getByTestId } = render(PanelResult, {
+      props: {
+        formula: '10. + 1=',
+        result: '11.',
+      },
+    })
+
+    expect(getByTestId('result').textContent).toBe('11')
+  })
 })
