@@ -1,5 +1,5 @@
-export const replaceFinalCharacter = (stringValue, replaceChar) => {
-  stringValue = stringValue.trim()
+export const replaceFinalCharacter = (formulaValue, replaceChar) => {
+  formulaValue = formulaValue.trim()
 
-  return `${stringValue.slice(0, stringValue.length - 2)} ${replaceChar} `
+  return `${formulaValue.slice(0, formulaValue.length - 2)} ${replaceChar} `
 }
