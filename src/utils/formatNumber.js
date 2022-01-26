@@ -48,7 +48,7 @@ export const formatFormulaNumbers = (formula) => {
       }
 
       if (/-?\d+.?\d*/.test(x)) {
-        return Number(x).toLocaleString('pt-BR')
+        return formatNumber(x)
       }
 
       return x

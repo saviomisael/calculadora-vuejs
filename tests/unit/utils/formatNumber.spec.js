@@ -54,5 +54,9 @@ describe('formatFormulaNumbers', () => {
     result = formatFormulaNumbers('1.0 + 2')
 
     expect(result).toBe('1,0 + 2')
+
+    result = formatFormulaNumbers('25.455844122715714')
+
+    expect(result).toBe('25,455844122715714')
   })
 })
