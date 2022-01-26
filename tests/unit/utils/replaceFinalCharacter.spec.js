@@ -54,4 +54,22 @@ describe('replaceFinalCharacter', () => {
 
     expect(result).toBe('1 × ')
   })
+
+  it('should replace final character when formula ends with multiplication operator', () => {
+    let result = replaceFinalCharacter('1 × ', '-')
+
+    expect(result).toBe('1 - ')
+
+    result = replaceFinalCharacter('1 × ', '÷')
+
+    expect(result).toBe('1 ÷ ')
+
+    result = replaceFinalCharacter('1 × ', '+')
+
+    expect(result).toBe('1 + ')
+
+    result = replaceFinalCharacter('1 × ', '×')
+
+    expect(result).toBe('1 × ')
+  })
 })
