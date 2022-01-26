@@ -23,6 +23,8 @@ export default {
     provide('appendFormula', (value) => {
       if (!formula.value && value === '.') return
 
+      if (formula.value.endsWith('=')) return
+
       formula.value = `${formula.value}${value}`
     })
 
