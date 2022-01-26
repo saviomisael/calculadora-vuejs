@@ -7,6 +7,8 @@ export const formatNumber = (num) => {
 
   num = num.replace('.', ',')
 
+  const isDecimalNumber = num.includes(',')
+
   const [wholeNumber, fractionalNumber] = num.split(',')
 
   num = wholeNumber
@@ -26,7 +28,9 @@ export const formatNumber = (num) => {
 
   if (num.endsWith('.')) num = num.slice(0, num.length - 1)
 
-  if (!fractionalNumber || /0+$/.test(fractionalNumber)) return num
+  if (!fractionalNumber && isDecimalNumber) return `${num},`
+
+  if (!fractionalNumber) return num
 
   num = `${num},${fractionalNumber}`
 
@@ -43,10 +47,6 @@ export const formatFormulaNumbers = (formula) => {
   formula = formula
     .split(' ')
     .map((x) => {
-      if (/\.$/.test(x) || /0$/.test(x)) {
-        return x.replace('.', ',')
-      }
-
       if (/-?\d+.?\d*/.test(x)) {
         return formatNumber(x)
       }

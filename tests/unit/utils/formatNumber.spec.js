@@ -15,11 +15,15 @@ describe('formatNumber', () => {
 
     result = formatNumber('10.0')
 
-    expect(result).toBe('10')
+    expect(result).toBe('10,0')
+
+    result = formatNumber('10.')
+
+    expect(result).toBe('10,')
 
     result = formatNumber('10.000')
 
-    expect(result).toBe('10')
+    expect(result).toBe('10,000')
 
     result = formatNumber('10.02')
 
@@ -55,8 +59,16 @@ describe('formatFormulaNumbers', () => {
 
     expect(result).toBe('1,0 + 2')
 
+    result = formatFormulaNumbers('1.02 + 2')
+
+    expect(result).toBe('1,02 + 2')
+
     result = formatFormulaNumbers('25.455844122715714')
 
     expect(result).toBe('25,455844122715714')
+
+    result = formatFormulaNumbers('1000000')
+
+    expect(result).toBe('1.000.000')
   })
 })
