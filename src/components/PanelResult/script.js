@@ -30,7 +30,7 @@ export default {
     truncResult(result) {
       result = formatNumber(result)
 
-      if (/,0*/.test(result)) {
+      if (/,0*$/.test(result)) {
         const commaIndex = result.lastIndexOf(',')
 
         return result.slice(0, commaIndex)
