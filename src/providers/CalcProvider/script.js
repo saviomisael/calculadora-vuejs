@@ -4,7 +4,7 @@ import { evaluate } from 'mathjs'
 import { getFinalCharacter } from '../../utils/getFinalCharacter'
 import { getLastNumber } from '../../utils/getLastNumber'
 import { isFinalCharacterOperator } from '../../utils/isFinalCharacterOperator'
-import { replaceFinalCharacter } from '../../utils/replaceFinalCharacter'
+import { replaceFinalCharacter } from '../../utils/replaceFinalCharacterByOperator'
 import { formulaContainsDivPerZero } from '../../utils/formulaContainsDivPerZero'
 import { toMathFormulaFormat } from '../../utils/toMathFormulaFormat'
 
