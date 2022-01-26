@@ -4,9 +4,10 @@ import { evaluate } from 'mathjs'
 import { getFinalCharacter } from '../../utils/getFinalCharacter'
 import { getLastNumber } from '../../utils/getLastNumber'
 import { isFinalCharacterOperator } from '../../utils/isFinalCharacterOperator'
-import { replaceFinalCharacter } from '../../utils/replaceFinalCharacterByOperator'
+import { replaceFinalCharacterByOperator } from '../../utils/replaceFinalCharacterByOperator'
 import { formulaContainsDivPerZero } from '../../utils/formulaContainsDivPerZero'
 import { toMathFormulaFormat } from '../../utils/toMathFormulaFormat'
+import { isComplexSquareOperation } from '../../utils/isComplexSquareOperation'
 
 export default {
   name: 'CalcProvider',
@@ -33,8 +34,6 @@ export default {
         return
       }
 
-      // TODO - validate square operations
-
       if (
         formula.value.trim().length === 1 &&
         getFinalCharacter(formula.value) === '√'
@@ -48,10 +47,23 @@ export default {
         return
       }
 
+      if (isComplexSquareOperation(formula.value)) {
+        return
+      }
+
       if (
-        ['÷', '×', '-', '+', '√'].includes(getFinalCharacter(formula.value))
+        ['÷', '×', '-', '+'].includes(getFinalCharacter(formula.value)) &&
+        operator !== '√'
       ) {
-        formula.value = replaceFinalCharacter(formula.value, operator)
+        formula.value = replaceFinalCharacterByOperator(formula.value, operator)
+        return
+      }
+
+      if (
+        ['÷', '×', '-', '+'].includes(getFinalCharacter(formula.value)) &&
+        operator === '√'
+      ) {
+        formula.value = `${formula.value}${operator} `
         return
       }
 
