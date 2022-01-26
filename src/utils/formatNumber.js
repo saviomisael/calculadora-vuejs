@@ -1,5 +1,36 @@
 export const formatNumber = (num) => {
-  return isNaN(Number(num)) ? num : Number(num).toLocaleString('pt-BR')
+  if (isNaN(Number(num))) return num
+
+  const isNegativeNumber = num.startsWith('-')
+
+  if (isNegativeNumber) num = num.slice(1)
+
+  num = num.replace('.', ',')
+
+  const [wholeNumber, fractionalNumber] = num.split(',')
+
+  num = wholeNumber
+    .split('')
+    .map((x, index, array) => {
+      if (array.length >= 3) {
+        if (index % 3 === 0) {
+          return `${x}.`
+        }
+      }
+
+      return x
+    })
+    .join('')
+
+  if (isNegativeNumber) num = `-${num}`
+
+  if (num.endsWith('.')) num = num.slice(0, num.length - 1)
+
+  if (!fractionalNumber || /0+$/.test(fractionalNumber)) return num
+
+  num = `${num},${fractionalNumber}`
+
+  return num
 }
 
 export const formatFormulaNumbers = (formula) => {

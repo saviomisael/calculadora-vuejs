@@ -9,7 +9,15 @@ describe('formatNumber', () => {
 
     expect(result).toBe('1.000')
 
+    result = formatNumber('1000000')
+
+    expect(result).toBe('1.000.000')
+
     result = formatNumber('10.0')
+
+    expect(result).toBe('10')
+
+    result = formatNumber('10.000')
 
     expect(result).toBe('10')
 
@@ -20,6 +28,10 @@ describe('formatNumber', () => {
     result = formatNumber('-10.02')
 
     expect(result).toBe('-10,02')
+
+    result = formatNumber('25.455844122715714')
+
+    expect(result).toBe('25,455844122715714')
   })
 
   it('should return the same parameter when pass a complex number', () => {
