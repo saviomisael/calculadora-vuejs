@@ -2,6 +2,7 @@ import { inject } from 'vue'
 import PanelResult from '../PanelResult'
 import ButtonsGrid from '../ButtonsGrid'
 import ModalError from '../ModalError'
+import { useDocumentEvent } from '../../composables/useDocumentEvent'
 
 export default {
   name: 'CalculatorBox',
@@ -15,6 +16,32 @@ export default {
     const addOperator = inject('addOperator')
     const resolveFormula = inject('resolveFormula')
     const backspace = inject('backspace')
+
+    useDocumentEvent('keydown', ({ key }) => {
+      const operatorsBindings = {
+        '*': '×',
+        '-': '-',
+        '+': '+',
+        '/': '÷',
+      }
+
+      if (/^[0-9.]$/.test(key)) {
+        appendFormula(key)
+      }
+
+      if (['*', '-', '+', '/'].includes(key)) {
+        const operator = operatorsBindings[key]
+        addOperator(operator)
+      }
+
+      if (key === '=') {
+        resolveFormula()
+      }
+
+      if (key === 'Backspace') {
+        backspace()
+      }
+    })
 
     return {
       formula,
@@ -36,36 +63,5 @@ export default {
     handleCloseModalClick() {
       this.clearDivPerZero()
     },
-    handleKeyDown({ key }) {
-      const operatorsBindings = {
-        '*': '×',
-        '-': '-',
-        '+': '+',
-        '/': '÷',
-      }
-
-      if (/^[0-9.]$/.test(key)) {
-        this.appendFormula(key)
-      }
-
-      if (['*', '-', '+', '/'].includes(key)) {
-        const operator = operatorsBindings[key]
-        this.addOperator(operator)
-      }
-
-      if (key === '=') {
-        this.resolveFormula()
-      }
-
-      if (key === 'Backspace') {
-        this.backspace()
-      }
-    },
-  },
-  mounted() {
-    document.addEventListener('keydown', this.handleKeyDown)
-  },
-  beforeUnmount() {
-    document.addEventListener('keydown', this.handleKeyDown)
   },
 }
