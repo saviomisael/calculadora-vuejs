@@ -1,20 +1,18 @@
+import { useDocumentEvent } from '../../composables/useDocumentEvent'
+
 export default {
   name: 'ModalError',
+  setup(props, { emit }) {
+    useDocumentEvent('keydown', ({ key }) => {
+      if (key === 'Escape') {
+        emit('on-close-modal')
+      }
+    })
+  },
   emits: ['on-close-modal'],
   methods: {
     handleCloseModalClick() {
       this.$emit('on-close-modal')
     },
-    handleKeyDown({ key }) {
-      if (key === 'Escape') {
-        this.$emit('on-close-modal')
-      }
-    },
-  },
-  mounted() {
-    document.addEventListener('keydown', this.handleKeyDown)
-  },
-  unmounted() {
-    document.removeEventListener('keydown', this.handleKeyDown)
   },
 }

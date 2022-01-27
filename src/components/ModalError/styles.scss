@@ -41,9 +41,9 @@
 
 @keyframes scale-modal {
   from {
-    transform: translate(-50%, -50%) scaleX(0);
+    transform: translate(-50%, -50%) scale(0);
   }
   to {
-    transform: translate(-50%, -50%) scaleX(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
