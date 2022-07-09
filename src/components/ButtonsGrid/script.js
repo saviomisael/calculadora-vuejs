@@ -1,4 +1,5 @@
 import { inject } from 'vue'
+import { useDocumentEvent } from '../../composables/useDocumentEvent'
 import OperatorButton from '../OperatorButton'
 import DigitButton from '../DigitButton'
 import backspaceIcon from '../../assets/images/backspace.svg'
@@ -12,6 +13,32 @@ export default {
     const resolveFormula = inject('resolveFormula')
     const clear = inject('clear')
     const backspace = inject('backspace')
+
+    useDocumentEvent('keydown', ({ key }) => {
+      const operatorsBindings = {
+        '*': '×',
+        '-': '-',
+        '+': '+',
+        '/': '÷',
+      }
+
+      if (/^[0-9.]$/.test(key)) {
+        appendFormula(key)
+      }
+
+      if (['*', '-', '+', '/'].includes(key)) {
+        const operator = operatorsBindings[key]
+        addOperator(operator)
+      }
+
+      if (key === '=') {
+        resolveFormula()
+      }
+
+      if (key === 'Backspace') {
+        backspace()
+      }
+    })
 
     return {
       appendFormula,
