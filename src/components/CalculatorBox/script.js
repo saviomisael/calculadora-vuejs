@@ -11,20 +11,11 @@ export default {
     const occurDivisionPerZero = inject('occurDivisionPerZero')
     const clearDivPerZero = inject('clearDivPerZero')
 
-    const appendFormula = inject('appendFormula')
-    const addOperator = inject('addOperator')
-    const resolveFormula = inject('resolveFormula')
-    const backspace = inject('backspace')
-
     return {
       formula,
       result,
       occurDivisionPerZero,
       clearDivPerZero,
-      appendFormula,
-      addOperator,
-      resolveFormula,
-      backspace,
     }
   },
   components: {
